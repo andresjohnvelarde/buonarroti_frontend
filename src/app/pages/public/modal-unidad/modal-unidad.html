@@ -1,0 +1,45 @@
+<div class="modal-overlay" (click)="cerrarModal()">
+    <div class="modal-container" (click)="$event.stopPropagation()">
+        <button class="close-main-btn" (click)="cerrarModal()">✕</button>
+
+        <div class="modal-content">
+            <div class="info-side">
+                <span class="detail-tag">{{ unidad.tipo }}</span>
+                <h2>{{ unidad.nombre }}</h2>
+
+                <div class="specs-grid">
+                    <div class="spec-item"><strong>Área:</strong> {{ unidad.area }} m²</div>
+                    <div class="spec-item" *ngIf="unidad.dormitorios">
+                        <strong>Dormitorios:</strong> {{ unidad.dormitorios }}
+                    </div>
+                    <div class="spec-item" *ngIf="unidad.precio">
+                        <strong>Precio:</strong> ${{ unidad.precio | number }}
+                    </div>
+                    <div class="spec-item" *ngIf="unidad.estado === 'vendido'">
+                        <strong class="text-vendido">ESTADO: VENDIDO</strong>
+                    </div>
+                </div>
+
+                <a [href]="whatsappUrl" target="_blank" class="wa-detail-btn">
+                    <img src="assets/images/whatsapp-icon.png" alt="" class="wa-icon">
+                    CONSULTAR POR WHATSAPP
+                </a>
+            </div>
+
+            <div class="plans-side" *ngIf="unidad.planos?.length > 0">
+                <h3>Planos de la Unidad</h3>
+                <div class="plans-container">
+                    <div *ngFor="let plano of unidad.planos" class="plan-card">
+                        <img [src]="plano" (click)="abrirZoom(plano)" class="plan-thumbnail" alt="Plano">
+                        <span>Click para ampliar</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="zoom-modal" *ngIf="imagenZoom" (click)="cerrarZoom()">
+    <span class="close-zoom">&times;</span>
+    <img [src]="imagenZoom" class="modal-content-zoom" (click)="$event.stopPropagation()">
+</div>

@@ -1,0 +1,43 @@
+<div class="interactive-container">
+    <div class="building-explorer">
+        <div class="header-controls">
+            <h1>{{ proyecto.nombre }}</h1>
+            <div class="bloque-switcher">
+                <button [class.active]="bloqueActivo === 'A'" (click)="bloqueActivo = 'A'">BLOQUE A</button>
+                <button [class.active]="bloqueActivo === 'B'" (click)="bloqueActivo = 'B'">BLOQUE B</button>
+            </div>
+        </div>
+
+        <div class="building-grid">
+            <div *ngFor="let nivel of proyecto.niveles" class="floor-row">
+                <div class="floor-label">{{ nivel.etiqueta }}</div>
+
+                <div class="units-container">
+                    <ng-container *ngIf="nivel.tipo_nivel === 'compartido'">
+                        <div *ngFor="let u of nivel.bloques[0].unidades" class="unit-item shared-unit"
+                            [ngClass]="u.estado" (click)="seleccionarUnidad(u,nivel.etiqueta)">
+                            {{ u.nombre }} <span *ngIf="u.dormitorios !== 0"> - {{ u.dormitorios }}</span>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngIf="nivel.tipo_nivel === 'dividido'">
+                        <div *ngFor="let bloque of nivel.bloques">
+                            <div class="units-sub-grid" *ngIf="bloque.nombre === bloqueActivo">
+                                <div *ngFor="let u of bloque.unidades" class="unit-item" [ngClass]="u.estado"
+                                    (click)="seleccionarUnidad(u,nivel.etiqueta)">
+                                    <span class="unit-name">{{ u.nombre }}</span> <span *ngIf="u.dormitorios !== 0"> {{
+                                        u.dormitorios }} Dormitorio<span *ngIf="u.dormitorios > 1">s</span></span>
+                                    <span class="unit-price" *ngIf="u.precio">${{ u.precio | number }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-modal-unidad *ngIf="unidadSeleccionada" [unidad]="unidadSeleccionada" [nombreProyecto]="proyecto.nombre"
+        [bloque]="bloqueActivo" [piso]="pisoSeleccionado" (close)="cerrarDetalle()">
+    </app-modal-unidad>
+</div>

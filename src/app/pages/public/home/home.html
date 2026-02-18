@@ -1,0 +1,146 @@
+<div class="home-container">
+
+    <section class="hero" [style.background-image]="'url(' + data.config.hero_image + ')'">
+        <div class="hero-overlay">
+            <h1 *ngIf="data.config.mostrar_nombre_hero" class="hero-title">
+                {{ data.config.empresa_nombre }}
+            </h1>
+        </div>
+    </section>
+
+    <section class="section-container">
+        <h2 class="section-title">Nuestros Proyectos</h2>
+        <div class="projects-grid">
+            <div class="project-card" *ngFor="let p of data.proyectos" (click)="verProyecto(p.id)">
+                <div class="card-image-wrapper">
+                    <img [src]="p.imagen" [alt]="p.nombre">
+                    <!-- <span class="tag-floating">departamentos y oficinas En {{ p.tipo_venta }}</span> -->
+                </div>
+                <div class="card-info">
+                    <p class="location-text">{{ p.ubicacion }}</p>
+                    <h3>{{ p.nombre }}</h3>
+                    <p class="resumen-text">{{ p.resumen }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <div class="filter-bar">
+        <div class="filter-container">
+            <span class="filter-label">Filtrar por:</span>
+            <button class="filter-btn" [class.active]="filtroSeleccionado === 'todos'"
+                (click)="filtrarPor('todos')">Todos</button>
+            <button class="filter-btn" [class.active]="filtroSeleccionado === 'casa'"
+                (click)="filtrarPor('casa')">Casas</button>
+            <button class="filter-btn" [class.active]="filtroSeleccionado === 'departamento'"
+                (click)="filtrarPor('departamento')">Departamentos</button>
+            <button class="filter-btn" [class.active]="filtroSeleccionado === 'terreno'"
+                (click)="filtrarPor('terreno')">Terrenos</button>
+            <button class="filter-btn" [class.active]="filtroSeleccionado === 'oficina'"
+                (click)="filtrarPor('oficina')">Oficinas</button>
+        </div>
+    </div>
+
+    <section class="section-container">
+        <h2 class="section-title">Inmuebles Independientes</h2>
+        <div class="units-grid">
+            <div class="unit-card" *ngFor="let u of unidadesFiltradas">
+                <div class="card-image-wrapper">
+                    <div class="price-tag">${{ u.precio | number }}</div>
+                    <img [src]="u.imagen" [alt]="u.nombre">
+                </div>
+                <div class="card-info">
+                    <span class="type-tag">{{ u.tipo }}</span>
+                    <h3>{{ u.nombre }}</h3>
+                    <div *ngIf="u.entrega_inmediata" class="delivery-badge">Entrega Inmediata</div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <section id="contacto" class="section-container contact-section">
+        <div class="contact-card">
+            <div class="contact-header">
+                <h2 class="section-title">¿Tiene alguna duda o quiere agendar una visita?</h2>
+                <p>Escribe tu consulta y hablemos directamente por WhatsApp. Estamos en línea.</p>
+            </div>
+
+            <div class="wa-input-group">
+                <input type="text" [(ngModel)]="mensajeUsuario" placeholder="Escriba su mensaje..."
+                    (keyup.enter)="irAWhatsApp()" class="wa-input" />
+                <button (click)="irAWhatsApp()" class="wa-button">
+                    <img src="images/whatsapp-sf.png" alt="Whatsapp" class="social-icon">
+                    ENVIAR CONSULTA
+                </button>
+            </div>
+            <p class="wa-footer">Responderemos lo más pronto posible.</p>
+        </div>
+    </section>
+
+</div>
+
+<!-- <div class="main-container">
+    <section class="hero-section">
+        <div class="hero-wrapper">
+            <img src="images/edificio-portada.jpg" alt="Edificio Warita" class="hero-image reveal">
+        </div>
+        <div class="project-header">
+            <span class="location-label">LA PAZ, BOLIVIA</span>
+            <h1 class="project-title">PROYECTO WARITA</h1>
+            <div class="divider"></div>
+        </div>
+    </section>
+
+    <section class="content-grid">
+        <div class="info-column">
+            <h2 class="section-title">Departamentos en Pre-Venta</h2>
+            <p class="subtitle">1, 2 Y 3 DORMITORIOS | OFICINAS DE LUJO</p>
+
+            <p class="description">
+                Vive en una ubicación privilegiada: a solo una cuadra y media de la <strong>Plaza España</strong>
+                y con acceso inmediato al <strong>Teleférico Amarillo</strong>. Equilibrio perfecto entre
+                modernidad y confort en el corazón de la ciudad.
+            </p>
+
+            <div class="pricing-card">
+                <h3>INVERSIÓN Y DISPONIBILIDAD</h3>
+                <div class="pricing-grid">
+                    <div class="price-item"><span>Oficinas</span> <strong>desde 35.900$</strong></div>
+                    <div class="price-item"><span>Deptos. 1D</span> <strong>desde 45.900$</strong></div>
+                    <div class="price-item"><span>Deptos. 2D</span> <strong>desde 75.900$</strong></div>
+                    <div class="price-item"><span>Deptos. 3D</span> <strong>desde 129.900$</strong></div>
+                </div>
+            </div>
+
+            <div class="mini-gallery">
+                <div class="img-container"><img src="images/imagen1.jpg" alt="Fachada"></div>
+                <div class="img-container"><img src="images/imagen2.jpg" alt="Interior"></div>
+                <div class="img-container"><img src="images/imagen3.jpg" alt="Cocina"></div>
+            </div>
+        </div>
+
+        <div class="cta-column">
+            <div class="brand-header">
+                <p class="label">CONSTRUCTORA</p>
+                <h2 class="brand-name">BUONARROTI</h2>
+            </div>
+
+            <div class="offer-details">
+                <div class="reservation-card">
+                    <p>ASEGURA TU FUTURO HOGAR</p>
+                    <span class="reserva-text">SOLO RESERVA CON</span>
+                    <span class="price">10.000$</span>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <a href="https://wa.me/59161166835?text=Hola!%2C%20me%20interesa%20tener%20m%C3%A1s%20informaci%C3%B3n%20respecto%20a%20uno%20de%20los%20departamentos%20del%20proyecto%20Warita."
+                    target="_blank" class="whatsapp-btn">
+                    <img src="images/whatsapp.png" alt="" class="wa-icon">
+                    ESCRÍBEME POR WHATSAPP
+                </a>
+                <p class="contact-footer">Número: <strong>61166835</strong></p>
+            </div>
+        </div>
+    </section>
+</div> -->

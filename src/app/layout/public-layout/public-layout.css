@@ -1,0 +1,11 @@
+.page-wrapper {
+    min-height: 100vh;
+    /* Ocupa toda la altura de la ventana */
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    /* Empuja el footer hacia abajo si hay poco contenido */
+}

@@ -1,0 +1,27 @@
+<nav class="navbar" [style.background-color]="navBgColor">
+    <div class="nav-container">
+        <a routerLink="/" class="logo" (click)="closeMenu()">
+            <img src="images/portada-blanco.png" alt="Logo" class="logo-img">
+        </a>
+
+        <button class="menu-toggle" (click)="toggleMenu()" [class.open]="isMenuOpen">
+            <span [style.background-color]="navTextColor"></span>
+            <span [style.background-color]="navTextColor"></span>
+            <span [style.background-color]="navTextColor"></span>
+        </button>
+
+        <ul class="nav-links" [class.show]="isMenuOpen" [style.background-color]="navBgColor">
+            <li>
+                <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                    [style.color]="navTextColor" (click)="closeMenu()">
+                    Propiedades
+                </a>
+            </li>
+            <li>
+                <a routerLink="/home" fragment="contacto" [style.color]="navTextColor" (click)="closeMenu()">
+                    Contacto
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

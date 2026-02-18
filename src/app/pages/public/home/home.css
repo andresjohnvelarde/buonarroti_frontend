@@ -1,0 +1,383 @@
+/* --- HERO SECTION --- */
+.hero {
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.7));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0px 20px;
+}
+
+.hero-title {
+    color: white;
+    /* 1. Tamaño dinámico: Min 2rem, ideal 8vw, Max 4rem */
+    font-size: clamp(2rem, 8vw, 4rem);
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+
+    /* 2. Control de desborde */
+    max-width: 90%;
+    /* No deja que el texto toque los bordes del hero */
+    margin: 0 auto;
+    /* Centra el bloque de texto */
+    line-height: 1.1;
+    /* Ajusta el espacio entre líneas si el texto se rompe */
+
+    /* 3. Forzar ruptura de palabras si es necesario */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+/* --- CONTENEDORES Y ALINEACIÓN --- */
+.section-container {
+    max-width: 100%;
+    margin: 80px auto;
+    padding: 0 200px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+.filter-label {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #000000;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-left: 6px solid #000;
+    padding-left: 20px;
+    letter-spacing: 1px;
+}
+
+/* --- FILTROS --- */
+.filter-bar {
+    background: #fcfcfc;
+    padding: 30px 0;
+    position: sticky;
+    top: 0px;
+    /* Ajustar según altura de tu navbar */
+    z-index: 900;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.filter-container {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    border: 1px solid #000;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* --- GRIDS --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.units-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+/* --- CARDS & ANIMATIONS --- */
+.project-card,
+.unit-card {
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.card-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    /* Mantiene el zoom dentro */
+    background-color: #f0f0f0;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    /* Transición suave de la imagen */
+}
+
+/* EFECTO HOVER */
+.project-card:hover,
+.unit-card:hover {
+    transform: translateY(-8px);
+}
+
+.project-card:hover .card-image-wrapper img,
+.unit-card:hover .card-image-wrapper img {
+    transform: scale(1.1);
+    /* Zoom de la imagen */
+}
+
+.card-info {
+    padding: 20px 0;
+    padding-top: 0px;
+}
+
+.card-info h3 {
+    margin: 10px 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+/* --- ELEMENTOS DE DISEÑO --- */
+.tag-floating {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 8px 20px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.price-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #fff;
+    color: #000;
+    padding: 8px 15px;
+    font-weight: 800;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.type-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #888;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.location-text {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.delivery-badge {
+    display: inline-block;
+    color: #27ae60;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1400px) {
+    .section-container {
+        padding: 0 100px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .section-container {
+        padding: 0 50px;
+    }
+
+    .projects-grid {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 850px) {
+    .section-container {
+        padding: 0 20px;
+        margin: 40px auto;
+        margin-bottom: 0px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+
+        padding: 10px;
+        margin: 0;
+    }
+
+    .card-image-wrapper {
+        height: 280px;
+    }
+}
+
+/* CONTACT SECTION */
+.contact-section {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 100px;
+}
+
+.contact-card {
+    background: #000;
+    /* Fondo negro para contraste total */
+    color: #fff;
+    padding: 60px;
+    width: 100%;
+
+    text-align: center;
+    border-radius: 2px;
+    /* Bordes rectos para look arquitectónico */
+}
+
+.contact-header .section-title {
+    border-left: none;
+    padding-left: 0;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.contact-header p {
+    color: #aaa;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+/* GRUPO DE INPUT Y BOTÓN */
+.wa-input-group {
+    display: flex;
+    gap: 0;
+    /* Unimos el input y el botón */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.wa-input {
+    flex: 1;
+    padding: 20px 25px;
+    border: none;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    color: #333;
+}
+
+.wa-button {
+    background: #25D366;
+    /* Verde Oficial WhatsApp */
+    color: black;
+    border: none;
+    padding: 0 40px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s ease;
+    white-space: nowrap;
+}
+
+.wa-button:hover {
+    background: #33a55d;
+}
+
+.wa-footer {
+    margin-top: 20px;
+    font-size: 1.0rem;
+    color: #b6b5b5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    transition: all 0.3s ease;
+}
+
+/* RESPONSIVE CONTACTO */
+@media (max-width: 768px) {
+    .wa-input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contact-card {
+        padding: 40px 20px;
+    }
+
+    .wa-button {
+        font-size: 0.7rem;
+        padding: 10px;
+        justify-content: center;
+    }
+
+    .wa-footer {
+        font-size: 0.7rem;
+    }
+
+    .social-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .contact-section {
+        padding-bottom: 20px;
+    }
+
+    .wa-input {
+        padding: 15px;
+    }
+
+    .section-title {
+        font-size: 1.2rem;
+    }
+
+    .contact-header p {
+        font-size: 1rem;
+    }
+}
