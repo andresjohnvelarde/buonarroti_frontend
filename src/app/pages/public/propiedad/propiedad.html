@@ -37,6 +37,43 @@
         </div>
     </div>
 
+    <div class="project-sidebar">
+        <div class="project-info-card">
+            <h3>Información adicional</h3>
+
+            <div class="info-item">
+                <div class="info-icon">📍</div>
+                <div class="info-text">
+                    <strong>Dirección</strong>
+                    <p>{{ proyecto.direccion_general }}</p>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <iframe [src]="mapaUrl" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
+                <a [href]="'https://www.google.com/maps/search/?api=1&query=' + proyecto.ubicacion_gps.lat + ',' + proyecto.ubicacion_gps.lng"
+                    target="_blank" class="map-link">
+                    Abrir en Google Maps ↗
+                </a>
+            </div>
+
+            <div class="info-item">
+                <div class="info-icon">🐾</div>
+                <div class="info-text">
+                    <strong>Política de Mascotas</strong>
+                    <p [ngClass]="{'text-success': admiteMascotas, 'text-danger': !admiteMascotas}">
+                        {{ admiteMascotas ? 'Permitidas (Máximo ' + proyecto.politicas_globales.max_mascotas + ')' : 'No se aceptan mascotas' }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- <div class="project-notes">
+                <small>* Los precios y disponibilidad pueden variar sin previo aviso.</small>
+            </div> -->
+        </div>
+    </div>
+
     <app-modal-unidad *ngIf="unidadSeleccionada" [unidad]="unidadSeleccionada" [nombreProyecto]="proyecto.nombre"
         [bloque]="bloqueActivo" [piso]="pisoSeleccionado" (close)="cerrarDetalle()">
     </app-modal-unidad>

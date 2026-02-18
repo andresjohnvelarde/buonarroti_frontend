@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ModalUnidad } from '../modal-unidad/modal-unidad';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-propiedad',
@@ -14,6 +15,18 @@ export class Propiedad {
   public proyecto = {
     "proyecto_id": 1,
     "nombre": "Warita",
+
+    "direccion_general": "Sopocachi, Calle Vincenti (Paralelo al teleférico amarillo)",
+    "ubicacion_gps": {
+      "lat": -16.515648,
+      "lng": -68.130157
+    },
+    "politicas_globales": {
+      "acepta_mascotas": true,
+      "max_mascotas": 1,
+      "observaciones_mascotas": "Solo razas pequeñas y medianas"
+    },
+
     "configuracion": {
       "moneda": "USD",
       "pisos_omitidos": [0]
@@ -42,23 +55,23 @@ export class Propiedad {
             "unidades": [
               {
                 "id": "A101", "nombre": "Oficina 1", "area": 22, "dormitorios": 0, "precio": 35900, "estado": "disponible", "tipo": "oficina",
-                "planos": ["images/planos/planoof1.png", "images/planos/planoof1_2.png"]
+                "planos": ["images/planos/planoof1.webp", "images/planos/planoof1_2.webp"]
               },
               {
                 "id": "A102", "nombre": "Oficina 2", "area": 23, "dormitorios": 0, "precio": 35900, "estado": "disponible", "tipo": "oficina",
-                "planos": ["images/planos/planoof2.png", "images/planos/planoof2_2.png"]
+                "planos": ["images/planos/planoof2.webp", "images/planos/planoof2_2.webp"]
               },
               {
                 "id": "A103", "nombre": "Oficina 3", "area": 24, "dormitorios": 0, "precio": 35900, "estado": "disponible", "tipo": "oficina",
-                "planos": ["images/planos/planoof3.png", "images/planos/planoof3_2.png"]
+                "planos": ["images/planos/planoof3.webp", "images/planos/planoof3_2.webp"]
               }
             ]
           },
           {
             "nombre": "B",
             "unidades": [
-              { "id": "B101", "nombre": "Depto 101-B", "dormitorios": 2, "area": 61, "precio": 75900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2db.png", "images/planos/planod2db_2.png"] },
-              { "id": "B102", "nombre": "Depto 102-B", "dormitorios": 1, "area": 36.68, "precio": 45900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod1db.png", "images/planos/planod1db_2.png"] }
+              { "id": "B101", "nombre": "Depto 101-B", "dormitorios": 2, "area": 61, "precio": 75900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2db.webp", "images/planos/planod2db_2.webp"] },
+              { "id": "B102", "nombre": "Depto 102-B", "dormitorios": 1, "area": 36.68, "precio": 45900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod1db.webp", "images/planos/planod1db_2.webp"] }
             ]
           }
         ]
@@ -71,14 +84,14 @@ export class Propiedad {
           {
             "nombre": "A",
             "unidades": [
-              { "id": "A201", "nombre": "Depto 201-A", "dormitorios": 2, "area": 93.07, "precio": 95900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2a.jpg", "images/planos/planod2a_2.png"] }
+              { "id": "A201", "nombre": "Depto 201-A", "dormitorios": 2, "area": 93.07, "precio": 95900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2a.webp", "images/planos/planod2a_2.webp"] }
             ]
           },
           {
             "nombre": "B",
             "unidades": [
-              { "id": "B201", "nombre": "Depto 201-B", "dormitorios": 2, "area": 61, "precio": 75900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2db.png", "images/planos/planod2db_2.png"] },
-              { "id": "B202", "nombre": "Depto 202-B", "dormitorios": 1, "area": 36.68, "precio": 45900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod1db.png", "images/planos/planod1db_2.png"] }
+              { "id": "B201", "nombre": "Depto 201-B", "dormitorios": 2, "area": 61, "precio": 75900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2db.webp", "images/planos/planod2db_2.webp"] },
+              { "id": "B202", "nombre": "Depto 202-B", "dormitorios": 1, "area": 36.68, "precio": 45900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod1db.webp", "images/planos/planod1db_2.webp"] }
             ]
           }
         ]
@@ -91,15 +104,15 @@ export class Propiedad {
           {
             "nombre": "A",
             "unidades": [
-              { "id": "A301", "nombre": "Depto 301-A", "dormitorios": 1, "area": 44.11, "precio": 51900, "estado": "disponible", "tipo": "departamento", "planos": ["url_a301_1", "url_a301_2"] },
-              { "id": "A302", "nombre": "Depto 302-A", "dormitorios": 1, "area": 47, "precio": 54900, "estado": "disponible", "tipo": "departamento", "planos": ["url_a302_1", "url_a302_2"] }
+              { "id": "A301", "nombre": "Depto 301-A", "dormitorios": 1, "area": 44.11, "precio": 51900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planom1d1ap3.webp", "images/planos/planom1d1ap3_2.webp"] },
+              { "id": "A302", "nombre": "Depto 302-A", "dormitorios": 1, "area": 47, "precio": 54900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/plano1d1ap3.webp", "images/planos/plano1d1ap3_2.webp"] }
             ]
           },
           {
             "nombre": "B",
             "unidades": [
-              { "id": "B301", "nombre": "Depto 301-B", "dormitorios": 2, "area": 61, "precio": 75900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2db.png", "images/planos/planod2db_2.png"] },
-              { "id": "B302", "nombre": "Depto 302-B", "dormitorios": 1, "area": 36.68, "precio": 45900, "estado": "vendido", "tipo": "departamento", "planos": ["images/planos/planod1db.png", "images/planos/planod1db_2.png"] },
+              { "id": "B301", "nombre": "Depto 301-B", "dormitorios": 2, "area": 61, "precio": 75900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2db.webp", "images/planos/planod2db_2.webp"] },
+              { "id": "B302", "nombre": "Depto 302-B", "dormitorios": 1, "area": 36.68, "precio": 45900, "estado": "vendido", "tipo": "departamento", "planos": ["images/planos/planod1db.webp", "images/planos/planod1db_2.webp"] },
             ]
           }
         ]
@@ -112,14 +125,14 @@ export class Propiedad {
           {
             "nombre": "A",
             "unidades": [
-              { "id": "A401", "nombre": "Depto 401-A", "dormitorios": 2, "area": 93.07, "precio": 95900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2a.jpg", "images/planos/planod2a_2.png"] }
+              { "id": "A401", "nombre": "Depto 401-A", "dormitorios": 2, "area": 93.07, "precio": 95900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2a.webp", "images/planos/planod2a_2.webp"] }
             ]
           },
           {
             "nombre": "B",
             "unidades": [
-              { "id": "B401", "nombre": "Depto 401-B", "dormitorios": 2, "area": 61, "precio": 75900, "estado": "vendido", "tipo": "departamento", "planos": ["images/planos/planod2db.png", "images/planos/planod2db_2.png"] },
-              { "id": "B402", "nombre": "Depto 402-B", "dormitorios": 1, "area": 36.68, "precio": 45900, "estado": "vendido", "tipo": "departamento", "planos": ["images/planos/planod1db.png", "images/planos/planod1db_2.png"] },
+              { "id": "B401", "nombre": "Depto 401-B", "dormitorios": 2, "area": 61, "precio": 75900, "estado": "vendido", "tipo": "departamento", "planos": ["images/planos/planod2db.webp", "images/planos/planod2db_2.webp"] },
+              { "id": "B402", "nombre": "Depto 402-B", "dormitorios": 1, "area": 36.68, "precio": 45900, "estado": "vendido", "tipo": "departamento", "planos": ["images/planos/planod1db.webp", "images/planos/planod1db_2.webp"] },
             ]
           }
         ]
@@ -132,13 +145,13 @@ export class Propiedad {
           {
             "nombre": "A",
             "unidades": [
-              { "id": "A501", "nombre": "Depto 501-A", "dormitorios": 2, "area": 93.07, "precio": 95900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2a.jpg", "images/planos/planod2a_2.png"] }
+              { "id": "A501", "nombre": "Depto 501-A", "dormitorios": 2, "area": 93.07, "precio": 95900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2a.webp", "images/planos/planod2a_2.webp"] }
             ]
           },
           {
             "nombre": "B",
             "unidades": [
-              { "id": "B501", "nombre": "Depto 501-B", "dormitorios": 3, "area": 100.09, "precio": 129900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod3db.png", "images/planos/planod3db_2.png"] }
+              { "id": "B501", "nombre": "Depto 501-B", "dormitorios": 3, "area": 100.09, "precio": 129900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod3db.webp", "images/planos/planod3db_2.webp"] }
             ]
           }
         ]
@@ -151,13 +164,13 @@ export class Propiedad {
           {
             "nombre": "A",
             "unidades": [
-              { "id": "A601", "nombre": "Depto 601-A", "dormitorios": 2, "area": 93.07, "precio": 95900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2a.jpg", "images/planos/planod2a_2.png"] }
+              { "id": "A601", "nombre": "Depto 601-A", "dormitorios": 2, "area": 93.07, "precio": 95900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod2a.webp", "images/planos/planod2a_2.webp"] }
             ]
           },
           {
             "nombre": "B",
             "unidades": [
-              { "id": "B601", "nombre": "Depto 601-B", "dormitorios": 3, "area": 100.09, "precio": 129900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod3db.png", "images/planos/planod3db_2.png"] }
+              { "id": "B601", "nombre": "Depto 601-B", "dormitorios": 3, "area": 100.09, "precio": 129900, "estado": "disponible", "tipo": "departamento", "planos": ["images/planos/planod3db.webp", "images/planos/planod3db_2.webp"] }
             ]
           }
         ]
@@ -200,6 +213,21 @@ export class Propiedad {
   public pisoSeleccionado: string = '';
   public unidadSeleccionada: any = null;
   public bloqueActivo: string = 'A'; // Por defecto bloque A
+
+
+  constructor(private sanitizer: DomSanitizer) { }
+
+  get mapaUrl(): SafeResourceUrl {
+    const lat = this.proyecto.ubicacion_gps.lat;
+    const lng = this.proyecto.ubicacion_gps.lng;
+    // URL de Google Maps para Embed
+    const url = `https://maps.google.com/maps?q=${lat},${lng}&z=15&output=embed`;
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  get admiteMascotas(): boolean {
+    return this.proyecto.politicas_globales.acepta_mascotas;
+  }
 
   ngOnInit(): void {
     // Invertimos los niveles para que el piso 8 aparezca arriba y el -1 abajo

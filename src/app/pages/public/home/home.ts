@@ -18,7 +18,7 @@ export class Home implements OnInit {
   public data: any = {
     config: {
       empresa_nombre: "Buonarroti Constructora",
-      hero_image: "/images/constructora.png", // Asegúrate de tener esta ruta
+      hero_image: "/images/constructora.webp", // Asegúrate de tener esta ruta
       mostrar_nombre_hero: true
     },
     proyectos: [
@@ -26,7 +26,7 @@ export class Home implements OnInit {
         id: 1,
         nombre: "Edificio Warita",
         tipo: "edificio",
-        imagen: "images/warita.webp",
+        imagen: "images/warita_com.webp",
         ubicacion: "Zona Sopocachi",
         resumen: "13 departamentos y 3 oficinas disponibles",
         tipo_venta: "Preventa"

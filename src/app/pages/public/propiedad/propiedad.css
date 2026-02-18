@@ -130,3 +130,101 @@
         flex-direction: column;
     }
 }
+
+/* Sidebar de información */
+.project-sidebar {
+    flex: 1;
+    min-width: 300px;
+}
+
+.project-info-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    position: sticky;
+    top: 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.project-info-card h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.info-icon {
+    font-size: 1.5rem;
+}
+
+.info-text strong {
+    display: block;
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.info-text p {
+    margin: 5px 0 0;
+    font-weight: 500;
+    color: #222;
+}
+
+/* Mapa */
+.map-container {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.map-link {
+    display: block;
+    text-align: center;
+    padding: 8px;
+    background: #f8f9fa;
+    font-size: 0.75rem;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.map-link:hover {
+    background: #e2e6ea;
+}
+
+/* Colores de estado */
+.text-success {
+    color: #28a745;
+}
+
+.text-danger {
+    color: #dc3545;
+}
+
+.project-notes {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px dashed #ccc;
+    color: #999;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+    .project-sidebar {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .project-info-card {
+        position: static;
+    }
+}
